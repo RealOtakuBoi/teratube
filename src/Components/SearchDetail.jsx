@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Typography, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { FetchFromApi } from "../Utils/FetchFromApi";
+import Loader from "./Loader";
 
 import Videos from "./Videos";
 
@@ -14,7 +15,7 @@ const SearchDetail = () => {
       .then((data) => setVideos(data?.items))
   }, [searchTerm]);
 
-  if(!videos) return 'Loading...'
+  if(!videos) return <Loader />;
 
   return (
     <Box p={2} minHeight="95vh">

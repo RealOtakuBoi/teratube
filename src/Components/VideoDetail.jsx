@@ -5,6 +5,7 @@ import { Typography, Box, Stack } from "@mui/material";
 import Videos from './Videos';
 import { FetchFromApi } from '../Utils/FetchFromApi';
 import { CheckCircleOutlineSharp } from "@mui/icons-material";
+import Loader from "./Loader";
 
 
 
@@ -21,7 +22,7 @@ const VideoDetail = () => {
     FetchFromApi(`search?part=snippet&relatedToVideoId=${id}&type=video`).then((data) => setVideos(data.items))
   },[id])
 
-  if(!videoDetails?.snippet) return 'Loading...';
+  if(!videoDetails?.snippet) return <Loader />;
 
   const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetails;
 

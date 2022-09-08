@@ -14,6 +14,8 @@ const SearchDetail = () => {
       .then((data) => setVideos(data?.items))
   }, [searchTerm]);
 
+  if(!videos) return 'Loading...'
+
   return (
     <Box p={2} minHeight="95vh">
       <Typography variant="h4" fontWeight={900}  color="white" mb={3} ml={{ sm: "100px"}}>
